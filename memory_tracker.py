@@ -33,6 +33,11 @@ class MemoryTracker(object):
                       get_available_memory_mb())
         self.data_points.append(data_point)
 
-    def dump(self):
+    def dump(self, num_points=-1):
+        points_to_dump = self.data_points
+
+        if num_points != -1:
+            points_to_dump = self.data_points[-num_points:]
+
         with open(self.filename, "w") as f:
-            f.write(json.dumps(self.data_points))
+            f.write(json.dumps(points_to_dump))
