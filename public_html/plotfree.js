@@ -9,6 +9,10 @@ function onDataReceived(series) {
 	        position: "se",
 	        show: true,
                 margin: [10, 10]
+            },
+            series: {
+                lines: { show: true },
+                points: { show: true }
             }
         }
     );
