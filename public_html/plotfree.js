@@ -4,6 +4,7 @@ function onDataReceived(series) {
         [series],
         {
             xaxis: { mode: "time" },
+            yaxis: { min: 0 },
             legend: {
 	        position: "se",
 	        show: true,
