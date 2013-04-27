@@ -24,7 +24,7 @@ class MemoryTracker(object):
         self.filename = filename
         try:
             with open(self.filename, "r") as f:
-                self.data_points = json.load(f)
+                self.data_points = json.load(f)["data"]
         except IOError as e:
             pass
 
@@ -40,4 +40,6 @@ class MemoryTracker(object):
             points_to_dump = self.data_points[-num_points:]
 
         with open(self.filename, "w") as f:
-            f.write(json.dumps(points_to_dump))
+            data = {"label": "Available Memory (MB)",
+                    "data": points_to_dump}
+            f.write(json.dumps(data))
