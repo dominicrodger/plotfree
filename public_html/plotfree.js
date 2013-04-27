@@ -3,8 +3,13 @@ function onDataReceived(series) {
         "#memoryplaceholder",
         [series],
         {
-            xaxis: { mode: "time" },
-            yaxis: { min: 0 },
+            xaxis: {
+                mode: "time",
+                timezone: "browser"
+            },
+            yaxis: {
+                min: 0
+            },
             legend: {
 	        position: "se",
 	        show: true,
