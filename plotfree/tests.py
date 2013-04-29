@@ -9,7 +9,7 @@ class DummyTracker(MemoryTracker):
         self.data_points.append((1, 2))
 
 
-class TestTracker(unittest.TestCase):
+class TestDummyTracker(unittest.TestCase):
     def test_dump_empty_file(self):
         f = os.tmpnam()
         writer = DummyTracker(f)
@@ -36,3 +36,13 @@ class TestTracker(unittest.TestCase):
 
         reader = DummyTracker(f)
         self.assertEqual(len(reader.data_points), 4)
+
+
+class TestRealTracker(unittest.TestCase):
+    def test_dump_single_point_file(self):
+        f = os.tmpnam()
+        writer = MemoryTracker(f)
+        writer.add_data_point()
+        writer.dump()
+        reader = MemoryTracker(f)
+        self.assertEqual(len(reader.data_points), 1)
