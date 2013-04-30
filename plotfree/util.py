@@ -13,3 +13,11 @@ def bytes_to_gigabytes(bytes):
 def get_time_for_flot():
     now = datetime.now()
     return calendar.timegm(now.timetuple()) * 1000
+
+
+def update_and_dump(tracker):
+    tracker.add_data_point()
+
+    # Only dump the latest 1440 points - intended for half-hourly
+    # stats for a month (2 * 24 * 30)
+    tracker.dump(1440)

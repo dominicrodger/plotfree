@@ -1,11 +1,9 @@
 #!/usr/bin/env python
+from plotfree.disk_tracker import DiskTracker
 from plotfree.memory_tracker import MemoryTracker
+from plotfree.util import update_and_dump
 
 
 if __name__ == "__main__":
-    m = MemoryTracker("public_html/data/memory.json")
-    m.add_data_point()
-
-    # Only dump the latest 1440 points - intended for half-hourly
-    # stats for a month (2 * 24 * 30)
-    m.dump(1440)
+    update_and_dump(MemoryTracker("public_html/data/memory.json"))
+    update_and_dump(DiskTracker("public_html/data/disk.json"))
