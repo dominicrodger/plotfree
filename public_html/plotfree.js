@@ -12,8 +12,7 @@ var options = {
         margin: [10, 10]
     },
     series: {
-        lines: { show: true },
-        points: { show: true }
+        lines: { show: true }
     }
 }
 
