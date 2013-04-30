@@ -4,6 +4,7 @@ import tempfile
 import unittest
 import uuid
 
+from .disk_tracker import DiskTracker
 from .memory_tracker import MemoryTracker
 
 
@@ -49,7 +50,17 @@ class TestDummyTracker(BaseTest):
         self.assertEqual(len(reader.data_points), 4)
 
 
-class TestRealTracker(BaseTest):
+class TestMemoryTracker(BaseTest):
+    def test_dump_single_point_file(self):
+        f = os.path.join(self.dir, str(uuid.uuid4()))
+        writer = MemoryTracker(f)
+        writer.add_data_point()
+        writer.dump()
+        reader = MemoryTracker(f)
+        self.assertEqual(len(reader.data_points), 1)
+
+
+class TestDiskTracker(BaseTest):
     def test_dump_single_point_file(self):
         f = os.path.join(self.dir, str(uuid.uuid4()))
         writer = MemoryTracker(f)
