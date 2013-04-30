@@ -5,7 +5,7 @@ from .util import (
 )
 
 
-class MemoryTracker(object):
+class BaseTracker(object):
     def __init__(self, filename):
         self.data_points = []
         self.filename = filename
@@ -15,11 +15,6 @@ class MemoryTracker(object):
         except IOError as e:
             pass
 
-    def add_data_point(self):
-        data_point = (get_time_for_flot(),
-                      get_available_memory_mb())
-        self.data_points.append(data_point)
-
     def dump(self, num_points=-1):
         points_to_dump = self.data_points
 
@@ -27,6 +22,18 @@ class MemoryTracker(object):
             points_to_dump = self.data_points[-num_points:]
 
         with open(self.filename, "w") as f:
-            data = {"label": "Available Memory (MB)",
+            data = {"label": self.data_label,
                     "data": points_to_dump}
             f.write(json.dumps(data))
+
+    def add_data_point(self):
+        data_point = (get_time_for_flot(),
+                      self.get_data_point())
+        self.data_points.append(data_point)
+
+
+class MemoryTracker(BaseTracker):
+    data_label = "Available Memory (MB)"
+
+    def get_data_point(self):
+        return get_available_memory_mb()
