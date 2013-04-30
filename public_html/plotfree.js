@@ -30,11 +30,23 @@ function plotMemory(series) {
 }
 
 
+function plotDisk(series) {
+    renderPlot(series, "#diskplaceholder");
+}
+
+
 $(function() {
     $.ajax({
         url: "/data/memory.json",
         type: "GET",
         dataType: "json",
         success: plotMemory
+    });
+
+    $.ajax({
+        url: "/data/disk.json",
+        type: "GET",
+        dataType: "json",
+        success: plotDisk
     });
 });
