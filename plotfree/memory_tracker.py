@@ -1,9 +1,11 @@
+import psutil
 from .base_tracker import BaseTracker
-from .util import get_available_memory_mb
+from .util import bytes_to_megabytes
 
 
 class MemoryTracker(BaseTracker):
     data_label = "Available Memory (MB)"
 
     def get_data_point(self):
-        return get_available_memory_mb()
+        bytes = psutil.virtual_memory().available
+        return bytes_to_megabytes(bytes)
