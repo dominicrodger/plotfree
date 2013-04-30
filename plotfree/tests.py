@@ -12,13 +12,15 @@ class DummyTracker(MemoryTracker):
         self.data_points.append((1, 2))
 
 
-class TestDummyTracker(unittest.TestCase):
+class BaseTest(unittest.TestCase):
     def setUp(self):
         self.dir = tempfile.mkdtemp()
 
     def tearDown(self):
         shutil.rmtree(self.dir)
 
+
+class TestDummyTracker(BaseTest):
     def test_dump_empty_file(self):
         f = os.path.join(self.dir, str(uuid.uuid4()))
         writer = DummyTracker(f)
@@ -47,13 +49,7 @@ class TestDummyTracker(unittest.TestCase):
         self.assertEqual(len(reader.data_points), 4)
 
 
-class TestRealTracker(unittest.TestCase):
-    def setUp(self):
-        self.dir = tempfile.mkdtemp()
-
-    def tearDown(self):
-        shutil.rmtree(self.dir)
-
+class TestRealTracker(BaseTest):
     def test_dump_single_point_file(self):
         f = os.path.join(self.dir, str(uuid.uuid4()))
         writer = MemoryTracker(f)
