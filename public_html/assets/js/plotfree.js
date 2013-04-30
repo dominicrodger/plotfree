@@ -1,6 +1,7 @@
 var options = {
     xaxis: {
         mode: "time",
+        minTickSize: [1, "day"],
         timezone: "browser"
     },
     yaxis: {
