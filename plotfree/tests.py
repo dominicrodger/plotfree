@@ -66,5 +66,5 @@ class TestDiskTracker(BaseTest):
         writer = MemoryTracker(f)
         writer.add_data_point()
         writer.dump()
-        reader = MemoryTracker(f)
+        reader = DiskTracker(f)
         self.assertEqual(len(reader.data_points), 1)
