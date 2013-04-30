@@ -11,6 +11,7 @@ setup(
     license='BSD',
     packages=find_packages(),
     include_package_data=True,
+    scripts=['plotfree/bin/plotfree-update.py', ],
     install_requires=[
         "psutil==0.7.0",
     ],
