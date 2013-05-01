@@ -4,9 +4,6 @@ var options = {
         minTickSize: [1, "day"],
         timezone: "browser"
     },
-    yaxis: {
-        min: 0
-    },
     legend: {
 	position: "se",
 	show: true,
