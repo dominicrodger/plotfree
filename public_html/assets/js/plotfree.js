@@ -31,19 +31,16 @@ function plotDisk(series) {
     renderPlot(series, "#diskplaceholder");
 }
 
+function plot(filename, callback) {
+    $.ajax({
+        url: "/data/" + filename + ".json",
+        type: "GET",
+        dataType: "json",
+        success: callback
+    });
+}
 
 $(function() {
-    $.ajax({
-        url: "/data/memory.json",
-        type: "GET",
-        dataType: "json",
-        success: plotMemory
-    });
-
-    $.ajax({
-        url: "/data/disk.json",
-        type: "GET",
-        dataType: "json",
-        success: plotDisk
-    });
+    plot("memory", plotMemory);
+    plot("disk", plotDisk);
 });
