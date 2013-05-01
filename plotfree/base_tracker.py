@@ -1,7 +1,5 @@
 import json
-from .util import (
-    get_time_for_flot
-)
+from .util import get_time_for_flot
 
 
 class BaseTracker(object):
