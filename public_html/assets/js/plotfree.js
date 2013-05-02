@@ -31,6 +31,28 @@ function plotDisk(series) {
     renderPlot(series, "#diskplaceholder");
 }
 
+function plotProcesses(series) {
+    $.plot(
+        "#processesplaceholder",
+        series,
+        {
+            series: {
+                pie: {
+                    innerRadius: 0.4,
+                    show: true,
+                    combine: {
+                        color: '#999',
+                        threshold: 0.02
+                    }
+                }
+            },
+            legend:{
+                show: false
+            }
+        }
+    );
+}
+
 function plot(filename, callback) {
     $.ajax({
         url: "/data/" + filename + ".json",
@@ -43,4 +65,5 @@ function plot(filename, callback) {
 $(function() {
     plot("memory", plotMemory);
     plot("disk", plotDisk);
+    plot("processes", plotProcesses);
 });

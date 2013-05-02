@@ -23,3 +23,7 @@
     font-size: 14px;
     line-height: 1.2em;
 }
+
+.processes .graph-container {
+    height: 600px;
+}
