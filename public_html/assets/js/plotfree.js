@@ -5,8 +5,8 @@ var options = {
         timezone: "browser"
     },
     legend: {
-	position: "se",
-	show: true,
+        position: "se",
+        show: true,
         margin: [10, 10]
     },
     series: {
