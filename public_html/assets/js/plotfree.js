@@ -32,24 +32,29 @@ function plotDisk(series) {
 }
 
 function plotProcesses(series) {
+    var options = {
+        series: {
+            pie: {
+                innerRadius: 0.4,
+                show: true,
+                combine: {
+                    threshold: 0.02
+                }
+            }
+        },
+        legend:{
+            show: false
+        }
+    };
+
+    options.colors = $.map(series, function(o, i) {
+        return jQuery.Color({ hue: (i*200/series.length), saturation: 0.95, lightness: 0.35, alpha: 1 }).toHexString();
+    });
+
     $.plot(
         "#processesplaceholder",
         series,
-        {
-            series: {
-                pie: {
-                    innerRadius: 0.4,
-                    show: true,
-                    combine: {
-                        color: '#999',
-                        threshold: 0.02
-                    }
-                }
-            },
-            legend:{
-                show: false
-            }
-        }
+        options
     );
 }
 
