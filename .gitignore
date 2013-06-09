@@ -1,5 +1,5 @@
 *.pyc
-public_html/data/*.json
+plotfree/public_html/data/*.json
 .tox/
 plotfree.egg-info/
 .coverage
