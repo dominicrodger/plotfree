@@ -9,6 +9,6 @@ plotfree.py (you'll need `psutil` installed to run it) periodically,
 and point a web-server to the `public_html` folder. All requests are
 for static assets, so deployment should be trivial.
 
-You can see it in action at http://memory.dominicrodger.com.
+You can see it in action at https://memory.dominicrodger.com.
 
 [digital-ocean]: http://www.digitalocean.com "Get hosting from Digital Ocean"
