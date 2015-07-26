@@ -13,6 +13,7 @@ setup(
     include_package_data=True,
     scripts=['plotfree/bin/plotfree-update.py', ],
     install_requires=[
+        "click",
         "psutil==0.7.0",
     ],
     classifiers=[
